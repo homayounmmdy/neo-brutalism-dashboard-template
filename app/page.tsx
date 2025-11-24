@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Button from "./components/Button";
 
 type Page = "home" | "login" | "signup" | "dashboard";
 
@@ -68,12 +69,13 @@ const App = () => {
         <p className="text-lg font-bold mb-8 text-gray-800">
           This is the home page. You need to login to access the dashboard!
         </p>
-        <button
+        <Button
           onClick={handleHomeNavigation}
-          className="w-full bg-cyan-400 border-4 border-black px-6 py-3 font-black text-xl hover:bg-cyan-300 active:shadow-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
+          color="btn-cyan"
+          className="w-full   "
         >
           GET STARTED
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -129,21 +131,19 @@ const App = () => {
             )}
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-yellow-300 border-4 border-black px-6 py-3 font-black text-xl hover:bg-yellow-200 active:shadow-none shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all"
-          >
+          <Button type="submit" color="btn-yellow" className="w-full   ">
             LOGIN NOW
-          </button>
+          </Button>
         </form>
 
         <div className="mt-6 text-center">
-          <button
+          <Button
             onClick={() => setCurrentPage("signup")}
+            color="btn-null"
             className="font-bold text-black underline hover:text-gray-700"
           >
             Do not have an account? SIGN UP
-          </button>
+          </Button>
         </div>
       </div>
     </div>
@@ -248,21 +248,19 @@ const App = () => {
             )}
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-cyan-400 border-4 border-black px-6 py-3 font-black text-xl hover:bg-cyan-300 active:shadow-none shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all"
-          >
+          <Button type="submit" color="btn-cyan" className="w-full">
             CREATE ACCOUNT
-          </button>
+          </Button>
         </form>
 
         <div className="mt-6 text-center">
-          <button
+          <Button
             onClick={() => setCurrentPage("login")}
+            color="btn-null"
             className="font-bold text-black underline hover:text-gray-700"
           >
             Already have an account? LOGIN
-          </button>
+          </Button>
         </div>
       </div>
     </div>
@@ -289,12 +287,13 @@ const App = () => {
             </div>
           </div>
 
-          <button
+          <Button
             onClick={handleLogout}
-            className="bg-red-500 text-white border-4 border-black px-6 py-3 font-black text-xl hover:bg-red-400 active:shadow-none shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all"
+            color="btn-red"
+            className=" text-white    "
           >
             LOGOUT
-          </button>
+          </Button>
         </div>
       </div>
     </div>
