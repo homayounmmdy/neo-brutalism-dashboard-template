@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "./components/Button";
+import ContentFrame from "./components/ContentFrame";
 
 type Page = "home" | "login" | "signup" | "dashboard";
 
@@ -64,7 +65,7 @@ const App = () => {
   // Home Page
   const HomePage = () => (
     <div className="min-h-screen bg-yellow-300 flex items-center justify-center p-4">
-      <div className="bg-white border-4 border-black p-8 max-w-md w-full shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <ContentFrame className="max-w-md w-full" shadowSize="md">
         <h1 className="text-5xl font-black mb-6 text-black">WELCOME</h1>
         <p className="text-lg font-bold mb-8 text-gray-800">
           This is the home page. You need to login to access the dashboard!
@@ -76,14 +77,14 @@ const App = () => {
         >
           GET STARTED
         </Button>
-      </div>
+      </ContentFrame>
     </div>
   );
 
   // Login Page
   const LoginPage = () => (
     <div className="min-h-screen bg-pink-400 flex items-center justify-center p-4">
-      <div className="bg-white border-4 border-black p-8 max-w-md w-full shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+      <ContentFrame className=" p-8 max-w-md w-full ">
         <h2 className="text-4xl font-black mb-6 text-black">LOGIN</h2>
 
         <form onSubmit={handleSubmitLogin(onLoginSubmit)} className="space-y-6">
@@ -145,14 +146,14 @@ const App = () => {
             Do not have an account? SIGN UP
           </Button>
         </div>
-      </div>
+      </ContentFrame>
     </div>
   );
 
   // Signup Page
   const SignupPage = () => (
     <div className="min-h-screen bg-green-400 flex items-center justify-center p-4">
-      <div className="bg-white border-4 border-black p-8 max-w-md w-full shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+      <ContentFrame className="p-8 max-w-md w-full ">
         <h2 className="text-4xl font-black mb-6 text-black">SIGN UP</h2>
 
         <form
@@ -262,7 +263,7 @@ const App = () => {
             Already have an account? LOGIN
           </Button>
         </div>
-      </div>
+      </ContentFrame>
     </div>
   );
 
@@ -270,7 +271,7 @@ const App = () => {
   const DashboardPage = () => (
     <div className="min-h-screen bg-purple-400 p-8">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white border-4 border-black p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+        <ContentFrame>
           <h2 className="text-5xl font-black mb-6 text-black">DASHBOARD</h2>
           <p className="text-xl font-bold mb-8 text-gray-800">
             🎉 Welcome! You are successfully logged in.
@@ -294,7 +295,7 @@ const App = () => {
           >
             LOGOUT
           </Button>
-        </div>
+        </ContentFrame>
       </div>
     </div>
   );
