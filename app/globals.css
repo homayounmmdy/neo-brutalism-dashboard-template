@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @layer utilities {
-  .btn {
-    @apply cursor-pointer px-6 py-3 font-black text-xl border-4 border-black active:shadow-none shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all;
-  }
-  .btn-null {
-    @apply !border-none shadow-none p-0 text-base;
-  }
-  .btn-yellow {
-    @apply bg-yellow-300 hover:bg-yellow-200;
-  }
-  .btn-cyan {
-    @apply bg-cyan-400 hover:bg-cyan-300;
-  }
-  .btn-red {
-    @apply bg-red-500 hover:bg-red-400;
-  }
+   .btn {
+      @apply cursor-pointer px-6 py-3 font-black text-xl border-4 border-black active:shadow-none shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all;
+   }
+   .btn-null {
+      @apply !border-none shadow-none p-0 text-base;
+   }
+   .btn-yellow {
+      @apply bg-yellow-300 hover:bg-yellow-200;
+   }
+   .btn-cyan {
+      @apply bg-cyan-400 hover:bg-cyan-300;
+   }
+   .btn-red {
+      @apply bg-red-500 hover:bg-red-400;
+   }
 }
