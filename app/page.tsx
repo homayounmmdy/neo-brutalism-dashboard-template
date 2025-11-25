@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "./components/Button";
 import ContentFrame from "./components/ContentFrame";
+import Input from "./components/Input";
 import InputErrorMessage from "./components/InputErrorMessage";
 
 type Page = "home" | "login" | "signup" | "dashboard";
@@ -96,7 +97,7 @@ const App = () => {
                   <label className="block text-sm font-black mb-2 text-black">
                      EMAIL
                   </label>
-                  <input
+                  <Input
                      type="email"
                      {...registerLogin("email", {
                         required: "Email is required",
@@ -105,7 +106,7 @@ const App = () => {
                            message: "Invalid email address",
                         },
                      })}
-                     className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-yellow-300"
+                     focusColor="focus-yellow"
                   />
                   {errorsLogin.email && (
                      <InputErrorMessage>
@@ -118,7 +119,7 @@ const App = () => {
                   <label className="block text-sm font-black mb-2 text-black">
                      PASSWORD
                   </label>
-                  <input
+                  <Input
                      type="password"
                      {...registerLogin("password", {
                         required: "Password is required",
@@ -127,7 +128,7 @@ const App = () => {
                            message: "Password must be at least 6 characters",
                         },
                      })}
-                     className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-yellow-300"
+                     focusColor="focus-yellow"
                   />
                   {errorsLogin.password && (
                      <InputErrorMessage>
@@ -168,7 +169,7 @@ const App = () => {
                   <label className="block text-sm font-black mb-2 text-black">
                      USERNAME
                   </label>
-                  <input
+                  <Input
                      type="text"
                      {...registerSignup("username", {
                         required: "Username is required",
@@ -177,7 +178,7 @@ const App = () => {
                            message: "Username must be at least 3 characters",
                         },
                      })}
-                     className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-cyan-300"
+                     focusColor="focus-cyan"
                   />
                   {errorsSignup.username && (
                      <InputErrorMessage>
@@ -190,7 +191,7 @@ const App = () => {
                   <label className="block text-sm font-black mb-2 text-black">
                      EMAIL
                   </label>
-                  <input
+                  <Input
                      type="email"
                      {...registerSignup("email", {
                         required: "Email is required",
@@ -199,7 +200,7 @@ const App = () => {
                            message: "Invalid email address",
                         },
                      })}
-                     className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-cyan-300"
+                     focusColor="focus-cyan"
                   />
                   {errorsSignup.email && (
                      <InputErrorMessage>
@@ -212,7 +213,7 @@ const App = () => {
                   <label className="block text-sm font-black mb-2 text-black">
                      PASSWORD
                   </label>
-                  <input
+                  <Input
                      type="password"
                      {...registerSignup("password", {
                         required: "Password is required",
@@ -221,7 +222,7 @@ const App = () => {
                            message: "Password must be at least 8 characters",
                         },
                      })}
-                     className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-cyan-300"
+                     focusColor="focus-cyan"
                   />
                   {errorsSignup.password && (
                      <InputErrorMessage>
@@ -234,7 +235,7 @@ const App = () => {
                   <label className="block text-sm font-black mb-2 text-black">
                      CONFIRM PASSWORD
                   </label>
-                  <input
+                  <Input
                      type="password"
                      {...registerSignup("confirmPassword", {
                         required: "Please confirm your password",
@@ -244,7 +245,7 @@ const App = () => {
                            }
                         },
                      })}
-                     className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-cyan-300"
+                     focusColor="focus-cyan"
                   />
                   {errorsSignup.confirmPassword && (
                      <InputErrorMessage>
@@ -297,7 +298,7 @@ const App = () => {
                <Button
                   onClick={handleLogout}
                   color="btn-red"
-                  className=" text-white    "
+                  className=" text-white"
                >
                   LOGOUT
                </Button>

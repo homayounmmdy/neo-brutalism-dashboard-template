@@ -1,7 +1,12 @@
 import React from "react";
 
-type BtnColors = "null" | "yellow" | "cyan" | "red";
+type ColorsVariant = "yellow" | "cyan" | "red";
+
 export type ButtonType = {
    children?: React.ReactNode;
-   color?: `btn-${BtnColors}`;
+   color?: `btn-${ColorsVariant}` | "btn-null";
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+export type InputType = {
+   focusColor?: `focus-${ColorsVariant}`;
+} & React.InputHTMLAttributes<HTMLInputElement>;
