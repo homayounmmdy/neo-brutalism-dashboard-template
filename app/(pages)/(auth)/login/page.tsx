@@ -4,6 +4,7 @@ import ContentFrame from "@/app/components/ContentFrame";
 import Input from "@/app/components/Input";
 import InputErrorMessage from "@/app/components/InputErrorMessage";
 import { useAuth } from "@/app/contexts/AuthContext";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
@@ -81,13 +82,12 @@ const LoginPage = () => {
             </form>
 
             <div className="mt-6 text-center">
-               <Button
-                  onClick={() => router.push("/signup")}
-                  color="btn-null"
-                  className="font-bold text-black underline hover:text-gray-700"
+               <Link
+                  href="/signup"
+                  className="font-black  text-black underline hover:text-gray-700 transition-all"
                >
                   Do not have an account? SIGN UP
-               </Button>
+               </Link>
             </div>
          </ContentFrame>
       </div>
