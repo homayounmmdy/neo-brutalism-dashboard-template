@@ -1,9 +1,28 @@
 import React from "react";
 import { InputType } from "../types/FormFiledType";
 
-const Input: React.FC<InputType> = ({ focusColor, className, ...rest }) => {
+const Input: React.FC<InputType> = ({
+   focusColor,
+   label,
+   className,
+   ...rest
+}) => {
    return (
-      <input className={`input focus-${focusColor} ${className}`} {...rest} />
+      <>
+         {label && (
+            <label
+               htmlFor={rest.id}
+               className="block text-sm font-black mb-2 text-black"
+            >
+               {label}
+            </label>
+         )}
+         <input
+            className={`input ${focusColor} ${className}`}
+            id={rest.id}
+            {...rest}
+         />
+      </>
    );
 };
 

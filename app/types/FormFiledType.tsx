@@ -9,4 +9,5 @@ export type ButtonType = {
 
 export type InputType = {
    focusColor?: `focus-${ColorsVariant}`;
+   label?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;

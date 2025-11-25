@@ -33,9 +33,6 @@ const LoginPage = () => {
 
             <form onSubmit={handleSubmit(onLoginSubmit)} className="space-y-6">
                <div>
-                  <label className="block text-sm font-black mb-2 text-black">
-                     EMAIL
-                  </label>
                   <Input
                      type="email"
                      {...register("email", {
@@ -45,6 +42,8 @@ const LoginPage = () => {
                            message: "Invalid email address",
                         },
                      })}
+                     id="email"
+                     label="EMAIL"
                      focusColor="focus-yellow"
                   />
                   {errors.email && (
@@ -55,9 +54,6 @@ const LoginPage = () => {
                </div>
 
                <div>
-                  <label className="block text-sm font-black mb-2 text-black">
-                     PASSWORD
-                  </label>
                   <Input
                      type="password"
                      {...register("password", {
@@ -67,6 +63,8 @@ const LoginPage = () => {
                            message: "Password must be at least 6 characters",
                         },
                      })}
+                     id="password"
+                     label="PASSWORD"
                      focusColor="focus-yellow"
                   />
                   {errors.password && (

@@ -35,9 +35,6 @@ const SingUpPage = () => {
 
             <form onSubmit={handleSubmit(onSignupSubmit)} className="space-y-6">
                <div>
-                  <label className="block text-sm font-black mb-2 text-black">
-                     USERNAME
-                  </label>
                   <Input
                      type="text"
                      {...register("username", {
@@ -48,6 +45,8 @@ const SingUpPage = () => {
                         },
                      })}
                      focusColor="focus-cyan"
+                     label="USERNAME"
+                     id="username"
                   />
                   {errors.username && (
                      <InputErrorMessage>
@@ -57,9 +56,6 @@ const SingUpPage = () => {
                </div>
 
                <div>
-                  <label className="block text-sm font-black mb-2 text-black">
-                     EMAIL
-                  </label>
                   <Input
                      type="email"
                      {...register("email", {
@@ -70,6 +66,8 @@ const SingUpPage = () => {
                         },
                      })}
                      focusColor="focus-cyan"
+                     label="EMAIL"
+                     id="email"
                   />
                   {errors.email && (
                      <InputErrorMessage>
@@ -79,9 +77,6 @@ const SingUpPage = () => {
                </div>
 
                <div>
-                  <label className="block text-sm font-black mb-2 text-black">
-                     PASSWORD
-                  </label>
                   <Input
                      type="password"
                      {...register("password", {
@@ -92,6 +87,8 @@ const SingUpPage = () => {
                         },
                      })}
                      focusColor="focus-cyan"
+                     label="PASSWORD"
+                     id="password"
                   />
                   {errors.password && (
                      <InputErrorMessage>
@@ -101,9 +98,6 @@ const SingUpPage = () => {
                </div>
 
                <div>
-                  <label className="block text-sm font-black mb-2 text-black">
-                     CONFIRM PASSWORD
-                  </label>
                   <Input
                      type="password"
                      {...register("confirmPassword", {
@@ -115,6 +109,8 @@ const SingUpPage = () => {
                         },
                      })}
                      focusColor="focus-cyan"
+                     label="CONFIRM PASSWORD"
+                     id="confirm_password"
                   />
                   {errors.confirmPassword && (
                      <InputErrorMessage>
