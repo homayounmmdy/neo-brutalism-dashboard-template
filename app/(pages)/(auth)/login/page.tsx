@@ -3,6 +3,7 @@ import Button from "@/app/components/Button";
 import ContentFrame from "@/app/components/ContentFrame";
 import Input from "@/app/components/Input";
 import InputErrorMessage from "@/app/components/InputErrorMessage";
+import { useAuth } from "@/app/contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
@@ -12,6 +13,7 @@ interface LoginForm {
 }
 const LoginPage = () => {
    const router = useRouter();
+   const { login } = useAuth();
 
    const {
       register,
@@ -20,7 +22,7 @@ const LoginPage = () => {
    } = useForm<LoginForm>();
 
    const onLoginSubmit = () => {
-      localStorage.setItem("isAuthenticated", "true");
+      login();
       router.push("/dashboard");
    };
    return (

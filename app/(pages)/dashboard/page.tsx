@@ -1,10 +1,12 @@
 "use client";
 import Button from "@/app/components/Button";
 import ContentFrame from "@/app/components/ContentFrame";
+import { useAuth } from "@/app/contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const DashboardPage = () => {
+   const { logout } = useAuth();
    const router = useRouter();
 
    useEffect(() => {
@@ -16,7 +18,7 @@ const DashboardPage = () => {
    }, [router]);
 
    const handleLogout = () => {
-      localStorage.removeItem("isAuthenticated");
+      logout();
       router.push("/");
    };
 
