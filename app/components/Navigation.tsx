@@ -6,7 +6,6 @@ import Button from "./Button";
 const Navigation = () => {
    const router = useRouter();
    const pathname = usePathname();
-   console.log(pathname === "/dashboard/analytics");
    const { logout } = useAuth();
 
    const navItems: { href: string; label: string; color: `bg-${string}` }[] = [
@@ -16,6 +15,7 @@ const Navigation = () => {
          label: "Analytics",
          color: "bg-pink-400",
       },
+      { href: "/dashboard/users", label: "Users", color: "bg-cyan-400" },
    ];
 
    const handleLogout = () => {
