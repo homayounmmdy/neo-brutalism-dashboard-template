@@ -1,6 +1,6 @@
 "use client";
-import Button from "@/app/components/Button";
 import ContentFrame from "@/app/components/ContentFrame";
+import RecentPosts from "@/app/components/RecentPosts";
 import { useAuth } from "@/app/contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -23,8 +23,8 @@ const DashboardPage = () => {
    };
 
    return (
-      <div className="min-h-screen bg-purple-400 p-8 pt-16">
-         <div className="max-w-4xl mx-auto">
+      <div className="bg-purple-400 p-8 pt-16">
+         <div className="max-w-7xl mx-auto">
             <ContentFrame>
                <h2 className="text-5xl font-black mb-6 text-black">
                   DASHBOARD
@@ -43,14 +43,7 @@ const DashboardPage = () => {
                      <p className="font-bold text-4xl">12</p>
                   </div>
                </div>
-
-               <Button
-                  onClick={handleLogout}
-                  color="btn-red"
-                  className=" text-white"
-               >
-                  LOGOUT
-               </Button>
+               <RecentPosts />
             </ContentFrame>
          </div>
       </div>
