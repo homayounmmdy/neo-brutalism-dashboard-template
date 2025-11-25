@@ -5,6 +5,7 @@ type ColorsVariant = "yellow" | "cyan" | "red";
 export type ButtonType = {
    children?: React.ReactNode;
    color?: `btn-${ColorsVariant}` | "btn-null";
+   buttonSize?: "sm" | "md" | "lg" | "xl";
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export type InputType = {

@@ -25,6 +25,7 @@ const Navigation = () => {
                {navItems.map((item) => (
                   <Button
                      key={item.label}
+                     buttonSize="md"
                      onClick={() => router.push(item.href)}
                      className={item.color}
                   >
@@ -32,7 +33,7 @@ const Navigation = () => {
                   </Button>
                ))}
             </div>
-            <Button onClick={handleLogout} color="btn-red">
+            <Button onClick={handleLogout} buttonSize="md" color="btn-red">
                Logout
             </Button>
          </div>
