@@ -23,7 +23,7 @@ const DashboardPage = () => {
    };
 
    return (
-      <div className="min-h-screen bg-purple-400 p-8">
+      <div className="min-h-screen bg-purple-400 p-8 pt-16">
          <div className="max-w-4xl mx-auto">
             <ContentFrame>
                <h2 className="text-5xl font-black mb-6 text-black">
