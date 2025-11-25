@@ -1,11 +1,14 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "../contexts/AuthContext";
 import Button from "./Button";
 
 const Navigation = () => {
    const router = useRouter();
+   const pathname = usePathname();
+   console.log(pathname === "/dashboard/analytics");
    const { logout } = useAuth();
+
    const navItems: { href: string; label: string; color: `bg-${string}` }[] = [
       { href: "/dashboard", label: "Dashboard", color: "bg-purple-400" },
       {
@@ -14,6 +17,7 @@ const Navigation = () => {
          color: "bg-pink-400",
       },
    ];
+
    const handleLogout = () => {
       logout();
       router.push("/");
@@ -27,7 +31,7 @@ const Navigation = () => {
                      key={item.label}
                      buttonSize="md"
                      onClick={() => router.push(item.href)}
-                     className={item.color}
+                     className={`${item.color} ${pathname === item.href ? "shadow-none! translate-x-0.5! translate-y-0.5!" : null}`}
                   >
                      {item.label}
                   </Button>
