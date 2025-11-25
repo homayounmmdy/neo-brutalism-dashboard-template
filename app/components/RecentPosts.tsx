@@ -1,14 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-
-type Post = {
-   id: number;
-   title: string;
-   body: string;
-   userId: number;
-};
+import { PostType } from "../types/DataType";
+import ContentFrame from "./ContentFrame";
 
 const RecentPosts = () => {
-   const fetchPosts = async (): Promise<Post[]> => {
+   const fetchPosts = async (): Promise<PostType[]> => {
       const res = await fetch("https://jsonplaceholder.typicode.com/posts");
       if (!res.ok) throw new Error("Failed to fetch posts");
       return res.json();
@@ -24,7 +19,7 @@ const RecentPosts = () => {
 
    const recentPosts = posts?.slice(0, 5) || [];
    return (
-      <div className="bg-white border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6">
+      <ContentFrame>
          <h2 className="text-3xl font-black mb-4 uppercase">Recent Posts</h2>
          {isLoading && <p className="font-bold">Loading posts...</p>}
          {error && (
@@ -43,7 +38,7 @@ const RecentPosts = () => {
                </div>
             ))}
          </div>
-      </div>
+      </ContentFrame>
    );
 };
 

@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function DashboardLayout({ children }: React.PropsWithChildren) {
@@ -13,7 +13,7 @@ export default function DashboardLayout({ children }: React.PropsWithChildren) {
       }
    }, [router]);
    return (
-      <div className="bg-purple-400 p-8 pt-16">
+      <div className="bg-amber-100 p-8 pt-16">
          <div className="max-w-7xl mx-auto">{children}</div>
       </div>
    );
