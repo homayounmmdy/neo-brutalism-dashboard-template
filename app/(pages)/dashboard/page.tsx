@@ -1,5 +1,6 @@
 "use client";
 import RecentPosts from "@/app/components/RecentPosts";
+import Stats from "@/app/components/Stats";
 
 const DashboardPage = () => {
    return (
@@ -10,16 +11,7 @@ const DashboardPage = () => {
             🎉 Welcome! You are successfully logged in.
          </p> */}
 
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div className="bg-yellow-300 border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-               <h3 className="text-2xl font-black mb-2">STATS</h3>
-               <p className="font-bold text-4xl">42</p>
-            </div>
-            <div className="bg-pink-300 border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-               <h3 className="text-2xl font-black mb-2">TASKS</h3>
-               <p className="font-bold text-4xl">12</p>
-            </div>
-         </div>
+         <Stats />
          <RecentPosts />
       </>
    );
