@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "./components/Button";
 import ContentFrame from "./components/ContentFrame";
+import InputErrorMessage from "./components/InputErrorMessage";
 
 type Page = "home" | "login" | "signup" | "dashboard";
 
@@ -107,9 +108,9 @@ const App = () => {
                      className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-yellow-300"
                   />
                   {errorsLogin.email && (
-                     <p className="mt-2 text-sm font-bold text-red-600 bg-red-100 border-2 border-black px-2 py-1">
-                        ⚠ {errorsLogin.email.message}
-                     </p>
+                     <InputErrorMessage>
+                        {errorsLogin.email.message}
+                     </InputErrorMessage>
                   )}
                </div>
 
@@ -129,9 +130,9 @@ const App = () => {
                      className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-yellow-300"
                   />
                   {errorsLogin.password && (
-                     <p className="mt-2 text-sm font-bold text-red-600 bg-red-100 border-2 border-black px-2 py-1">
-                        ⚠ {errorsLogin.password.message}
-                     </p>
+                     <InputErrorMessage>
+                        {errorsLogin.password.message}
+                     </InputErrorMessage>
                   )}
                </div>
 
@@ -179,9 +180,9 @@ const App = () => {
                      className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-cyan-300"
                   />
                   {errorsSignup.username && (
-                     <p className="mt-2 text-sm font-bold text-red-600 bg-red-100 border-2 border-black px-2 py-1">
-                        ⚠ {errorsSignup.username.message}
-                     </p>
+                     <InputErrorMessage>
+                        {errorsSignup.username.message}
+                     </InputErrorMessage>
                   )}
                </div>
 
@@ -201,9 +202,9 @@ const App = () => {
                      className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-cyan-300"
                   />
                   {errorsSignup.email && (
-                     <p className="mt-2 text-sm font-bold text-red-600 bg-red-100 border-2 border-black px-2 py-1">
-                        ⚠ {errorsSignup.email.message}
-                     </p>
+                     <InputErrorMessage>
+                        {errorsSignup.email.message}
+                     </InputErrorMessage>
                   )}
                </div>
 
@@ -223,9 +224,9 @@ const App = () => {
                      className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-cyan-300"
                   />
                   {errorsSignup.password && (
-                     <p className="mt-2 text-sm font-bold text-red-600 bg-red-100 border-2 border-black px-2 py-1">
-                        ⚠ {errorsSignup.password.message}
-                     </p>
+                     <InputErrorMessage>
+                        {errorsSignup.password.message}
+                     </InputErrorMessage>
                   )}
                </div>
 
@@ -246,9 +247,9 @@ const App = () => {
                      className="w-full border-4 border-black px-4 py-2 font-bold focus:outline-none focus:ring-4 focus:ring-cyan-300"
                   />
                   {errorsSignup.confirmPassword && (
-                     <p className="mt-2 text-sm font-bold text-red-600 bg-red-100 border-2 border-black px-2 py-1">
-                        ⚠ {errorsSignup.confirmPassword.message}
-                     </p>
+                     <InputErrorMessage>
+                        {errorsSignup.confirmPassword.message}
+                     </InputErrorMessage>
                   )}
                </div>
 
