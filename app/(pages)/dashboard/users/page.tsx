@@ -1,4 +1,5 @@
 "use client";
+import SectionHeader from "@/app/components/SectionHeader";
 import { UserType } from "@/app/types/DataType";
 import { useQuery } from "@tanstack/react-query";
 
@@ -19,7 +20,7 @@ const UsersPage = () => {
    });
    return (
       <div>
-         <h1 className="text-5xl font-black mb-6 uppercase">Users</h1>
+         <SectionHeader title="USERS" />
 
          <div className="bg-white border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
             {isLoading && <p className="p-6 font-bold">Loading users...</p>}

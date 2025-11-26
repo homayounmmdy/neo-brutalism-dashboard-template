@@ -1,4 +1,5 @@
 "use client";
+import SectionHeader from "@/app/components/SectionHeader";
 import { PostType } from "@/app/types/DataType";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -37,7 +38,7 @@ const AnalyticsPage = () => {
    }));
    return (
       <div>
-         <h1 className="text-5xl font-black mb-6 uppercase">Analytics</h1>
+         <SectionHeader title="Analytics" />
 
          <div className="bg-white border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6">
             <h2 className="text-3xl font-black mb-4 uppercase">

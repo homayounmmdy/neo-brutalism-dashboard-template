@@ -3,6 +3,7 @@ import Button from "@/app/components/Button";
 import ContentFrame from "@/app/components/ContentFrame";
 import Input from "@/app/components/Input";
 import InputErrorMessage from "@/app/components/InputErrorMessage";
+import SectionHeader from "@/app/components/SectionHeader";
 import { useAuth } from "@/app/contexts/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -31,7 +32,7 @@ const SingUpPage = () => {
    return (
       <div className="min-h-screen bg-green-400 flex items-center justify-center p-4">
          <ContentFrame className="p-8 max-w-md w-full ">
-            <h2 className="text-4xl font-black mb-6 text-black">SIGN UP</h2>
+            <SectionHeader title="SIGN UP" headSize="sm" />
 
             <form onSubmit={handleSubmit(onSignupSubmit)} className="space-y-6">
                <div>
