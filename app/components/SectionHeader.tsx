@@ -11,7 +11,7 @@ const SectionHeader = ({ title, headSize = "md" }: Props) => {
    return (
       <div className="mb-8 group cursor-pointer w-fit">
          <h1
-            className={`${headSizeClasses[headSize]} font-black mb-2 uppercase group-hover:scale-105 transition-transform duration-300`}
+            className={`text-3xl md:${headSizeClasses[headSize]} font-black mb-2 uppercase group-hover:scale-105 transition-transform duration-300`}
          >
             {title}
          </h1>
