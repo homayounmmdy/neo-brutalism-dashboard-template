@@ -35,19 +35,19 @@ const UsersPage = () => {
                   <table className="w-full">
                      <thead className="bg-cyan-300 border-b-4 border-black">
                         <tr>
-                           <th className="px-6 py-4 text-left font-black uppercase border-r-4 border-black">
+                           <th className="px-3 md:px-6 py-2 md:py-4 text-left font-black uppercase border-r-4 border-black">
                               ID
                            </th>
-                           <th className="px-6 py-4 text-left font-black uppercase border-r-4 border-black">
+                           <th className="px-3 md:px-6 py-2 md:py-4 text-left font-black uppercase border-r-4 border-black">
                               Name
                            </th>
-                           <th className="px-6 py-4 text-left font-black uppercase border-r-4 border-black">
+                           <th className="px-3 md:px-6 py-2 md:py-4 text-left font-black uppercase border-r-4 border-black">
                               Email
                            </th>
-                           <th className="px-6 py-4 text-left font-black uppercase border-r-4 border-black">
+                           <th className="px-3 md:px-6 py-2 md:py-4 text-left font-black uppercase border-r-4 border-black">
                               Company
                            </th>
-                           <th className="px-6 py-4 text-left font-black uppercase">
+                           <th className="px-3 md:px-6 py-2 md:py-4 text-left font-black uppercase">
                               Phone
                            </th>
                         </tr>
@@ -58,19 +58,19 @@ const UsersPage = () => {
                               key={user.id}
                               className={`${idx % 2 === 0 ? "bg-white" : "bg-purple-100"} border-b-4 border-black`}
                            >
-                              <td className="px-6 py-4 font-bold border-r-4 border-black">
+                              <td className="px-3 md:px-6 py-2 md:py-4 font-bold border-r-4 border-black">
                                  {user.id}
                               </td>
-                              <td className="px-6 py-4 font-bold border-r-4 border-black">
+                              <td className="px-3 md:px-6 py-2 md:py-4 font-bold border-r-4 border-black">
                                  {user.name}
                               </td>
-                              <td className="px-6 py-4 font-medium border-r-4 border-black">
+                              <td className="px-3 md:px-6 py-2 md:py-4 font-medium border-r-4 border-black">
                                  {user.email}
                               </td>
-                              <td className="px-6 py-4 font-bold border-r-4 border-black">
+                              <td className="px-3 md:px-6 py-2 md:py-4 font-bold border-r-4 border-black">
                                  {user.company.name}
                               </td>
-                              <td className="px-6 py-4 font-medium">
+                              <td className="px-3 md:px-6 py-2 md:py-4 font-medium">
                                  {user.phone}
                               </td>
                            </tr>
