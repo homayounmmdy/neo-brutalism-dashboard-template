@@ -8,7 +8,7 @@ const UsersPage = () => {
       <div>
          <SectionHeader title="USERS" sectionClassName="mt-3" />
 
-         <div className="bg-white border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+         <div className="bg-white dark:bg-gray-800 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
             {isLoading && <p className="p-6 font-bold">Loading users...</p>}
             {error && (
                <p className="p-6 font-bold text-red-600">
@@ -19,7 +19,7 @@ const UsersPage = () => {
             {users && (
                <div className="overflow-x-auto">
                   <table className="w-full">
-                     <thead className="bg-cyan-300 border-b-4 border-black">
+                     <thead className="bg-cyan-300 dark:bg-blue-900 border-b-4 border-black">
                         <tr>
                            <th className="px-3 md:px-6 py-2 md:py-4 text-left font-black uppercase border-r-4 border-black">
                               ID
@@ -42,7 +42,7 @@ const UsersPage = () => {
                         {users.map((user, idx) => (
                            <tr
                               key={user.id}
-                              className={`${idx % 2 === 0 ? "bg-white" : "bg-purple-100"} border-b-4 border-black`}
+                              className={`${idx % 2 === 0 ? "dark:bg-gray-900 bg-white" : "dark:dark:bg-gray-800 bg-purple-100"} border-b-4 border-black`}
                            >
                               <td className="px-3 md:px-6 py-2 md:py-4 font-bold border-r-4 border-black">
                                  {user.id}
