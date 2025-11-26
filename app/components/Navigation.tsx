@@ -26,10 +26,12 @@ const Navigation = () => {
    };
 
    return (
-      <nav className="bg-white fixed z-50 top-0 left-0 right-0 border-b-4 border-black shadow-[0px_4px_0px_0px_rgba(0,0,0,1)] max-w-7xl mx-auto">
+      <nav className="bg-white dark:bg-gray-900 fixed z-50 top-0 left-0 right-0 border-b-4 border-black shadow-[0px_4px_0px_0px_rgba(0,0,0,1)] max-w-7xl mx-auto transition-colors">
          <div className="p-4">
             <div className="flex items-center justify-between">
-               <div className="font-bold text-xl">MYDASH</div>
+               <div className="font-bold text-xl text-black dark:text-white">
+                  MYDASH
+               </div>
 
                {/* Desktop Navigation */}
                <div className="hidden md:flex gap-3 items-center">
@@ -58,7 +60,7 @@ const Navigation = () => {
                {/* Mobile Menu Button */}
                <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="md:hidden w-12 h-12 bg-yellow-400 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all flex flex-col items-center justify-center gap-1.5"
+                  className="md:hidden w-12 h-12 bg-yellow-400 dark:bg-cyan-500 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all flex flex-col items-center justify-center gap-1.5"
                   aria-label="Toggle menu"
                >
                   <span

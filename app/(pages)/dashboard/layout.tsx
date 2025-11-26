@@ -13,7 +13,7 @@ export default function DashboardLayout({ children }: React.PropsWithChildren) {
       }
    }, [router]);
    return (
-      <div className="bg-amber-100 p-4 md:p-8 pt-16">
+      <div className="bg-amber-100 dark:bg-purple-900 dark:text-white p-4 md:p-8 pt-16">
          <div className="max-w-7xl mx-auto">{children}</div>
       </div>
    );
