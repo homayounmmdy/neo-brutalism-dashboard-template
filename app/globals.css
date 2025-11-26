@@ -1,38 +1,41 @@
+/* globals.css */
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer utilities {
    .btn {
-      @apply cursor-pointer  font-black  border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 active:shadow-none active:translate-x-0.5 active:translate-y-0.5 transition-all;
+      @apply cursor-pointer font-black border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 active:shadow-none active:translate-x-0.5 active:translate-y-0.5 transition-all;
    }
    .btn-null {
       @apply border-none! shadow-none p-0 text-base;
    }
    .btn-yellow {
-      @apply bg-yellow-300 hover:bg-yellow-200;
+      @apply bg-yellow-300 hover:bg-yellow-200 dark:bg-yellow-400 dark:hover:bg-yellow-300;
    }
    .btn-cyan {
-      @apply bg-cyan-400 hover:bg-cyan-300;
+      @apply bg-cyan-400 hover:bg-cyan-300 dark:bg-cyan-500 dark:hover:bg-cyan-400;
    }
    .btn-red {
-      @apply bg-red-500 hover:bg-red-400;
+      @apply bg-red-500 hover:bg-red-400 dark:bg-red-600 dark:hover:bg-red-500;
    }
    .btn-green {
-      @apply bg-green-500 hover:bg-green-400;
+      @apply bg-green-500 hover:bg-green-400 dark:bg-green-600 dark:hover:bg-green-500;
    }
 
    .input {
-      @apply w-full px-4 py-2 border-4 border-black font-bold focus:outline-none;
+      @apply w-full px-4 py-2 border-4 border-black font-bold focus:outline-none dark:bg-gray-800 dark:text-white;
    }
    .focus-cyan {
-      @apply focus:ring-4 focus:ring-cyan-300;
+      @apply focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-500;
    }
    .focus-yellow {
-      @apply focus:ring-4 focus:ring-yellow-300;
+      @apply focus:ring-4 focus:ring-yellow-300 dark:focus:ring-yellow-500;
    }
    .focus-red {
-      @apply focus:ring-4 focus:ring-red-300;
+      @apply focus:ring-4 focus:ring-red-300 dark:focus:ring-red-500;
    }
    .focus-green {
-      @apply focus:ring-4 focus:ring-green-300;
+      @apply focus:ring-4 focus:ring-green-300 dark:focus:ring-green-500;
    }
 }

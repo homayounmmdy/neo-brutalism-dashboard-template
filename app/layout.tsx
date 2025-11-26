@@ -76,6 +76,22 @@ export default function RootLayout({
 }>) {
    return (
       <html lang="en">
+         <head>
+            <script
+               dangerouslySetInnerHTML={{
+                  __html: `
+(function(){
+  try {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = saved === 'dark' || (saved === null && prefersDark);
+    document.documentElement.classList.toggle('dark', isDark);
+  } catch (_) {}
+})();
+            `,
+               }}
+            />
+         </head>
          <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
          >

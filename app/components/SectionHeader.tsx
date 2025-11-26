@@ -17,7 +17,7 @@ const SectionHeader = ({ title, headSize = "md", sectionClassName }: Props) => {
             {title}
          </h1>
          <div className="relative">
-            <div className="h-2 bg-black w-20 group-hover:w-full transition-all duration-500 ease-out origin-left"></div>
+            <div className="h-2 dark:bg-white bg-black w-20 group-hover:w-full transition-all duration-500 ease-out origin-left"></div>
          </div>
       </div>
    );

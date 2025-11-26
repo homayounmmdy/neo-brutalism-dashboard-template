@@ -1,24 +1,30 @@
+"use client";
 import { useEffect, useState } from "react";
 
 export const useTheme = () => {
-   const [theme, setTheme] = useState<string>("light");
+   const [theme, setTheme] = useState<"light" | "dark">(() => {
+      if (typeof window === "undefined") return "light"; // SSR fallback
+      const saved = localStorage.getItem("theme");
+      if (saved === "dark" || saved === "light") return saved;
 
-   // Initialize theme from localStorage on mount
-   useEffect(() => {
-      const savedTheme = localStorage.getItem("theme") || "light";
-      setTheme(savedTheme);
-   }, []);
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+         ? "dark"
+         : "light";
+   });
 
-   // Apply theme changes to document and localStorage
    useEffect(() => {
-      document.documentElement.setAttribute("data-theme", theme);
-      localStorage.setItem("theme", theme);
+      const root = document.documentElement;
+
+      if (theme === "dark") {
+         root.classList.add("dark");
+         localStorage.setItem("theme", "dark");
+      } else {
+         root.classList.remove("dark");
+         localStorage.setItem("theme", "light");
+      }
    }, [theme]);
 
-   const toggleTheme = () => {
-      const newTheme = theme === "light" ? "dark" : "light";
-      setTheme(newTheme);
-   };
+   const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
 
    return { theme, toggleTheme };
 };

@@ -14,7 +14,7 @@ const ContentFrame = ({ children, shadowSize = "lg", className }: Props) => {
 
    return (
       <div
-         className={`bg-white border-4 border-black p-8 ${shadowClasses[shadowSize]} ${className}`}
+         className={`bg-white dark:bg-gray-900 dark:text-white border-4 border-black p-8 ${shadowClasses[shadowSize]} transition-colors ${className}`}
       >
          {children}
       </div>
