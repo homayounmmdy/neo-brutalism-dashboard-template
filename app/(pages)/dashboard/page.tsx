@@ -6,7 +6,7 @@ import Stats from "@/app/components/Stats";
 const DashboardPage = () => {
    return (
       <>
-         <SectionHeader title="DASHBOARD" />
+         <SectionHeader title="DASHBOARD" sectionClassName="mt-3" />
          {/* 
          <p className="text-xl font-bold mb-8 text-gray-800">
             🎉 Welcome! You are successfully logged in.

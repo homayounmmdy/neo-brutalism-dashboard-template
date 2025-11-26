@@ -45,7 +45,7 @@ const AnalyticsPage = () => {
 
    return (
       <div className="px-2 sm:px-0">
-         <SectionHeader title="Analytics" />
+         <SectionHeader title="Analytics" sectionClassName="mt-3" />
 
          <div className="bg-white border-2 sm:border-4 border-black p-3 sm:p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] sm:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-4 sm:mb-6">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-black mb-3 sm:mb-4 uppercase">
