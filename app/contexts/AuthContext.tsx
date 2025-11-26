@@ -1,4 +1,5 @@
 "use client";
+import { usePathname, useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 interface AuthContextType {
@@ -14,8 +15,14 @@ export function AuthProvider({ children }: React.PropsWithChildren) {
    const [isAuthenticated, setIsAuthenticated] = useState(false);
    const [isLoading, setIsLoading] = useState(true);
 
+   const pathname = usePathname();
+   const router = useRouter();
+   const publicRoutes = ["/", "/login", "/signup"];
    useEffect(() => {
       const authStatus = localStorage.getItem("isAuthenticated");
+      if (authStatus == "true" && publicRoutes.includes(pathname)) {
+         router.push("/dashboard");
+      }
       setIsAuthenticated(authStatus == "true");
       setIsLoading(false);
    }, []);
