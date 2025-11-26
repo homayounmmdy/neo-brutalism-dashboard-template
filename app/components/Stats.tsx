@@ -42,11 +42,11 @@ const Stats = () => {
       { label: "Growth", value: randomStats.growth, color: "bg-yellow-300" },
    ];
    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
          {stats.map((stat, idx) => (
             <div
                key={idx}
-               className={`${stat.color} border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
+               className={`${stat.color} border-4 border-black p-2 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
             >
                <p className="text-sm font-bold uppercase mb-1">{stat.label}</p>
                <p className="text-4xl font-black">{stat.value}</p>
