@@ -1,21 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { PostType } from "../types/DataType";
+import { useFetchPosts } from "../hook/useFetch";
 import ContentFrame from "./ContentFrame";
 
 const RecentPosts = () => {
-   const fetchPosts = async (): Promise<PostType[]> => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-      if (!res.ok) throw new Error("Failed to fetch posts");
-      return res.json();
-   };
-   const {
-      data: posts,
-      isLoading,
-      error,
-   } = useQuery({
-      queryKey: ["posts"],
-      queryFn: fetchPosts,
-   });
+   const { data: posts, isLoading, error } = useFetchPosts();
 
    const recentPosts = posts?.slice(0, 5) || [];
    return (

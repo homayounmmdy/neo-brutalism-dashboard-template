@@ -1,17 +1,8 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
-import { PostType } from "../types/DataType";
+import { useFetchPosts } from "../hook/useFetch";
 
 const Stats = () => {
-   const fetchPosts = async (): Promise<PostType[]> => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-      if (!res.ok) throw new Error("Failed to fetch posts");
-      return res.json();
-   };
-   const { data: posts } = useQuery({
-      queryKey: ["posts"],
-      queryFn: fetchPosts,
-   });
+   const { data: posts } = useFetchPosts();
 
    const getRandomStats = () => {
       const activeUsers = Math.floor(Math.random() * 255) + 1; // 1-255

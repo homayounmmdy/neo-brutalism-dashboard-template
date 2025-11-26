@@ -1,8 +1,7 @@
 "use client";
 import SectionHeader from "@/app/components/SectionHeader";
-import { PostType } from "@/app/types/DataType";
-import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
+import { useFetchPosts } from "@/app/hook/useFetch";
+import { useEffect, useState } from "react";
 import {
    Bar,
    BarChart,
@@ -25,16 +24,7 @@ const AnalyticsPage = () => {
       return () => window.removeEventListener("resize", checkMobile);
    }, []);
 
-   const fetchPosts = async (): Promise<PostType[]> => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-      if (!res.ok) throw new Error("Failed to fetch posts");
-      return res.json();
-   };
-
-   const { data: posts } = useQuery({
-      queryKey: ["posts"],
-      queryFn: fetchPosts,
-   });
+   const { data: posts } = useFetchPosts();
 
    const chartData =
       posts?.slice(0, isMobile ? 5 : 10).map((post, idx) => ({

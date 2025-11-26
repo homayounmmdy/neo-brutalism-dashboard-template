@@ -1,23 +1,9 @@
 "use client";
 import SectionHeader from "@/app/components/SectionHeader";
-import { UserType } from "@/app/types/DataType";
-import { useQuery } from "@tanstack/react-query";
+import { useFetchUsers } from "@/app/hook/useFetch";
 
 const UsersPage = () => {
-   const fetchUsers = async (): Promise<UserType[]> => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/users");
-      if (!res.ok) throw new Error("Failed to fetch users");
-      return res.json();
-   };
-
-   const {
-      data: users,
-      isLoading,
-      error,
-   } = useQuery({
-      queryKey: ["users"],
-      queryFn: fetchUsers,
-   });
+   const { data: users, isLoading, error } = useFetchUsers();
    return (
       <div>
          <SectionHeader title="USERS" />
