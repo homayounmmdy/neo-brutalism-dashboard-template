@@ -12,7 +12,7 @@ const Input: React.FC<InputType> = ({
          {label && (
             <label
                htmlFor={rest.id}
-               className="block text-sm font-black mb-2 text-black"
+               className="block text-sm font-black mb-2 text-black dark:text-gray-200 transition-colors"
             >
                {label}
             </label>

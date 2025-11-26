@@ -28,7 +28,7 @@ const LoginPage = () => {
       router.push("/dashboard");
    };
    return (
-      <div className="min-h-screen bg-pink-400 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-pink-400 dark:bg-indigo-900 flex items-center justify-center p-4">
          <ContentFrame className=" p-8 max-w-md w-full ">
             <SectionHeader title="LOGIN" headSize="sm" />
 
@@ -83,7 +83,7 @@ const LoginPage = () => {
             <div className="mt-6 text-center">
                <Link
                   href="/signup"
-                  className="font-black  text-black underline hover:text-gray-700 transition-all"
+                  className="font-black text-black dark:text-yellow-400 underline hover:text-gray-700 dark:hover:text-yellow-300 transition-colors"
                >
                   Do not have an account? SIGN UP
                </Link>

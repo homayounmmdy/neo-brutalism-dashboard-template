@@ -15,7 +15,8 @@ interface SignupForm {
    password: string;
    confirmPassword: string;
 }
-const SingUpPage = () => {
+
+const SignUpPage = () => {
    const router = useRouter();
    const { login } = useAuth();
    const {
@@ -29,9 +30,10 @@ const SingUpPage = () => {
       login();
       router.push("/dashboard");
    };
+
    return (
-      <div className="min-h-screen bg-green-400 flex items-center justify-center p-4">
-         <ContentFrame className="p-8 max-w-md w-full ">
+      <div className="min-h-screen bg-green-400 dark:bg-indigo-900 flex items-center justify-center p-4 transition-colors">
+         <ContentFrame className="p-8 max-w-md w-full">
             <SectionHeader title="SIGN UP" headSize="sm" />
 
             <form onSubmit={handleSubmit(onSignupSubmit)} className="space-y-6">
@@ -128,7 +130,7 @@ const SingUpPage = () => {
             <div className="mt-6 text-center">
                <Link
                   href="/login"
-                  className="font-black  text-black underline hover:text-gray-700 transition-all"
+                  className="font-black text-black dark:text-cyan-400 underline hover:text-gray-700 dark:hover:text-cyan-300 transition-colors"
                >
                   Already have an account? LOGIN
                </Link>
@@ -138,4 +140,4 @@ const SingUpPage = () => {
    );
 };
 
-export default SingUpPage;
+export default SignUpPage;
