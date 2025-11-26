@@ -3,6 +3,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "../contexts/AuthContext";
 import Button from "./Button";
 import ThemeToggle from "./ThemeToggle";
+import AuthButton from "./AuthButton";
 
 const Navigation = () => {
    const router = useRouter();
@@ -40,9 +41,7 @@ const Navigation = () => {
             </div>
             <div className="flex gap-4 items-center">
                <ThemeToggle />
-               <Button onClick={handleLogout} buttonSize="md" color="btn-red">
-                  Logout
-               </Button>
+               <AuthButton />
             </div>
          </div>
       </nav>

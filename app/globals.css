@@ -16,6 +16,9 @@
    .btn-red {
       @apply bg-red-500 hover:bg-red-400;
    }
+   .btn-green {
+      @apply bg-green-500 hover:bg-green-400;
+   }
 
    .input {
       @apply w-full px-4 py-2 border-4 border-black font-bold focus:outline-none;
@@ -28,5 +31,8 @@
    }
    .focus-red {
       @apply focus:ring-4 focus:ring-red-300;
+   }
+   .focus-green {
+      @apply focus:ring-4 focus:ring-green-300;
    }
 }

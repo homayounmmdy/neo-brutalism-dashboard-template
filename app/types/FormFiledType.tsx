@@ -1,6 +1,6 @@
 import React from "react";
 
-type ColorsVariant = "yellow" | "cyan" | "red";
+type ColorsVariant = "yellow" | "cyan" | "red" | "green";
 
 export type ButtonType = {
    children?: React.ReactNode;
