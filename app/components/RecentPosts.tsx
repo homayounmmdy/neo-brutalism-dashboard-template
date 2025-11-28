@@ -7,8 +7,8 @@ const RecentPosts = () => {
    const recentPosts = posts?.slice(0, 5) || [];
 
    return (
-      <ContentFrame className="p-3! md:p-8">
-         <h2 className="text-3xl font-black mb-4 uppercase text-black dark:text-white">
+      <ContentFrame className="p-3! md:p-8" shadowSize="sm">
+         <h2 className="mb-4 text-3xl font-black uppercase text-black dark:text-white">
             Recent Posts
          </h2>
          {isLoading && (
@@ -25,9 +25,9 @@ const RecentPosts = () => {
             {recentPosts.map((post) => (
                <div
                   key={post.id}
-                  className="bg-purple-100 dark:bg-purple-900 border-4 border-black p-2 md:p-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-colors hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] duration-200"
+                  className="border-4 border-black bg-purple-100 p-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-colors duration-200 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:bg-purple-900 md:p-4"
                >
-                  <h3 className="font-black text-lg mb-2 text-black dark:text-white">
+                  <h3 className="mb-2 text-lg font-black text-black dark:text-white">
                      {post.title}
                   </h3>
                   <p className="text-sm font-medium text-gray-800 dark:text-gray-300">
