@@ -1,5 +1,6 @@
 /* globals.css */
 @import "tailwindcss";
+@source "../stories";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -24,7 +25,7 @@
    }
 
    .input {
-      @apply w-full px-4 py-2 border-4 border-black font-bold focus:outline-none dark:bg-gray-800 dark:text-white;
+      @apply w-full border-4 border-black px-4 py-2 font-bold focus:outline-none dark:bg-gray-800 dark:text-white;
    }
    .focus-cyan {
       @apply focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-500;
