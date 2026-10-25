@@ -1,106 +1,102 @@
-# My-Dash | Neo-Brutalism Dashboard 🚀
+# Neo Brutalism UI 🎨
 
-A modern Neo-Brutalism styled dashboard template combining bold aesthetics 🎨, functional UI/UX, and clean developer experience.  
-Built with **Next.js**, **Tailwind CSS**, and **Recharts**, this project demonstrates a modern approach to dashboards with consistency, reusable components, and strong attention to layout and visuals.
+A modern **Neo-Brutalism UI library** featuring bold visuals, thick borders, vibrant colors, and reusable components. Built with **React, Next.js, TypeScript, and Tailwind CSS**, this project provides a collection of UI components and pages that developers can explore through Storybook.
 
-## 🔗 Live Demo  
-**👉 https://neo-brutalism-dashboard-template.vercel.app/**
+## 🔗 Live Storybook
 
-## 📸 Screenshots  
-> Previewed using Neo-Brutalist shapes, bold borders, and vibrant color blocks 🟦🟨🟥
+**👉 https://homayounmmdy.github.io/neo-brutalism-ui/**
 
-### 🖥️ Main Dashboard Page  
-![1000008980](https://github.com/user-attachments/assets/cd0d7b53-46b3-4577-a87d-618c35c4a964)
-
-### 📊 Analytics Dashboard Page  
-![1000008979](https://github.com/user-attachments/assets/e7a695e2-ed2a-49fa-ab1c-4003bb8d8e9e)
+Explore the component library, preview UI elements, and browse complete pages and layouts.
 
 ## ✨ Features
 
-### 🎨 Neo-Brutalism UI
-- Strong visual identity: thick borders, sharp contrast, raw composition 🖌️
-- Unified component system built fully with **Tailwind CSS** 
-- Responsive layout optimized for modern admin dashboards 📱💻
+### 🎨 Neo-Brutalism Design System
+- Bold borders, high contrast, and vibrant color palettes.
+- Distinctive shadows and geometric visual elements.
+- Consistent styling with Tailwind CSS.
+- Responsive layouts for modern web applications.
 
-### 📊 Analytics Visuals
-- Interactive graphs powered by **Recharts** 📈
-- Modular chart components 🔧
+### 📚 Interactive Storybook
+- Explore reusable UI components in isolation.
+- Preview components and their variations.
+- Browse complete UI pages and layouts.
+- Use interactive previews as a reference when integrating components into your projects.
 
-### ⚡ Modern Stack
-- **Next.js App Router** ⚙️
-- **Tailwind CSS v3+** 🎨
-- **TypeScript** support 🛡️
-- Client-side routing for a smooth UX ✨
+### 📊 Dashboard Components
+- Interactive data visualizations powered by Recharts.
+- Modular chart components and dashboard layouts.
+- Reusable UI elements for analytics and administration interfaces.
+
+### ⚡ Developer Experience
+- Built with React and Next.js.
+- TypeScript support for type safety.
+- Component-driven development with Storybook.
+- Reusable styling and consistent UI patterns.
 
 ## 🛠️ Tech Stack
 
 | Technology | Purpose |
-|------------|---------|
-| **Next.js** | Core framework, routing, rendering ⚡ |
-| **Tailwind CSS** | Styling, design system, global theme 🎨 |
-| **Recharts** | Data visualization 📊 |
-| **TypeScript** | Type safety & clarity ✅ |
-| **Lucide Icons** | Clean icons (optional in UI) 🔹 |
+|---|---|
+| **Next.js** | Application framework |
+| **React** | Component-based UI development |
+| **TypeScript** | Type safety and maintainability |
+| **Tailwind CSS** | Styling and design system |
+| **Storybook** | Component documentation and visual previews |
+| **Recharts** | Data visualization |
+| **Lucide Icons** | Interface icons |
 
-## 🔐 Authentication & Data (Current Status)  
-> ⚠️ This project is primarily a **UI/UX coding challenge**, not a full-stack product.
+## 🚀 Getting Started
 
-- Currently, local state or localStorage may be used for user/session simulation
-- **Not production-secure**  no DB, no password hashing, no secure auth 🔒
+### Prerequisites
 
-## 🧭 Planned Improvements (If Developed Further)
+- Node.js
+- pnpm, npm, or yarn
 
-### 1. 🔒 Secure Authentication  
-- Move from localStorage to database-backed auth (e.g., PostgreSQL + Prisma, Supabase, Auth0, NextAuth)  
-- Server-side session management  
-- Proper password hashing & OAuth flows  
-
-### 2. 💾 Persistent Data Layer  
-- Replace local mocks with real database storage  
-- CRUD operations with API routes 🛠️  
-- Dashboard statistics from real data  
-
-### 3. ♿ Accessibility Enhancements (A11y)  
-- Improve semantic HTML  
-- Keyboard navigation support ⌨️  
-- WCAG-compliant contrast levels  
-- ARIA attributes for charts & navigation  
-
-### 4. 🧪 Test Coverage  
-- Component/UI unit tests  
-- Integration tests for routing  
-- Snapshot testing for layout  
-> **Tools:** Vitest, Playwright, React Testing Library  
-
-## ⭐ Architectural Goals  
-- Keep UI components small, reusable, and composable 🧩  
-- Follow consistent styling: margins, borders, shadows 🎯  
-- Separate business logic from UI 🧠  
-- Maintain clarity and scalability for enterprise dashboards 🏢
-
-## 📦 Installation & Setup
+### Installation
 
 ```bash
-# 1. Clone repository 📥
-git clone https://github.com/<your-repo>/neo-brutalism-dashboard
+git clone https://github.com/homayounmmdy/neo-brutalism-ui.git
 
-# 2. Install dependencies 📦
-pnpm install
-# or npm install
-# or yarn install
+cd neo-brutalism-ui
 
-# 3. Run development server 🚀
-pnpm dev
-# or npm dev
-# or yarn dev
-
-# 4. Open your browser:
-👉 http://localhost:3000
+npm install
 ```
 
-## 📜 Licensing  
-This project is provided for **demonstration and educational purposes**.  
-Feel free to extend the idea, customize, or rebuild. 🔨
+### Run the Development Server
 
-## 👨🏻‍💻 Creator  
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the application.
+
+### Run Storybook
+
+```bash
+npm run storybook
+```
+
+Storybook is typically available at [http://localhost:6006](http://localhost:6006).
+
+## 🧭 Project Goals
+
+- Build a reusable Neo-Brutalist UI library.
+- Make components easy to discover and preview through Storybook.
+- Provide reusable interface elements and complete page layouts.
+- Maintain consistent design patterns across the library.
+- Help developers build bold, distinctive interfaces faster.
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+## 👨🏻‍💻 Creator
+
 **Homayoun Mohammadi**
+
+- GitHub: [@homayounmmdy](https://github.com/homayounmmdy)
+- Storybook: [Neo Brutalism UI](https://homayounmmdy.github.io/neo-brutalism-ui/)
+
+---
+
+⭐ If you find this project useful, consider giving it a star on GitHub!
