@@ -12,6 +12,12 @@ const config: StorybookConfig = {
       "@storybook/addon-docs",
    ],
    framework: "@storybook/nextjs-vite",
-   staticDirs: ["..\\public"],
+   staticDirs: ["../public"],
+   async viteFinal(config) {
+      return {
+         ...config,
+         base: "/neo-brutalism-ui/",
+      };
+   },
 };
 export default config;
