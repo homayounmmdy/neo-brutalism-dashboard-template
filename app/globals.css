@@ -64,4 +64,40 @@
    .stat-pink {
       @apply bg-pink-300 dark:bg-pink-600;
    }
+
+   .table {
+      @apply bg-white dark:bg-gray-800 border-4 border-black
+          shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden;
+   }
+   .table-scroll {
+      @apply overflow-x-auto;
+   }
+   .table-el {
+      @apply w-full;
+   }
+   .table-head {
+      @apply border-b-4 border-black bg-cyan-300 dark:bg-blue-900;
+   }
+   .table-th {
+      @apply border-r-4 border-black px-3 py-2 text-left font-black uppercase md:px-6 md:py-4;
+   }
+   .table-row {
+      @apply border-b-4 border-black bg-white dark:bg-gray-900;
+   }
+   .table-row:nth-child(even) {
+      @apply bg-purple-100 dark:bg-gray-800;
+   }
+   .table-td {
+      @apply border-r-4 border-black px-3 py-2 font-bold md:px-6 md:py-4;
+   }
+   .table-th:last-child,
+   .table-td:last-child {
+      border-right-width: 0;
+   }
+   .table-msg {
+      @apply p-6 font-bold;
+   }
+   .table-msg-error {
+      @apply p-6 font-bold text-red-600;
+   }
 }
