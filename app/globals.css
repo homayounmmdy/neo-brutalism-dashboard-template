@@ -39,4 +39,29 @@
    .focus-green {
       @apply focus:ring-4 focus:ring-green-300 dark:focus:ring-green-500;
    }
+
+   .stat {
+      @apply border-4 border-black p-2 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-200 cursor-pointer;
+   }
+   .stat-null {
+      /* opt-out of built-in variant — supply your own bg via className */
+   }
+   .stat-yellow {
+      @apply bg-yellow-300 dark:bg-yellow-600;
+   }
+   .stat-cyan {
+      @apply bg-cyan-300 dark:bg-cyan-600;
+   }
+   .stat-red {
+      @apply bg-red-500 dark:bg-red-600;
+   }
+   .stat-green {
+      @apply bg-green-500 dark:bg-green-600;
+   }
+   .stat-lime {
+      @apply bg-lime-300 dark:bg-lime-600;
+   }
+   .stat-pink {
+      @apply bg-pink-300 dark:bg-pink-600;
+   }
 }

@@ -1,5 +1,7 @@
 "use client";
 import { useFetchPosts } from "../hook/useFetch";
+import Stat from "./Stat";
+import { StatType } from "../types/StatType";
 
 const Stats = () => {
    const { data: posts } = useFetchPosts();
@@ -18,47 +20,33 @@ const Stats = () => {
 
    const randomStats = getRandomStats();
 
-   const stats = [
+   const stats: StatType[] = [
       {
          label: "Total Posts",
          value: posts?.length || 0,
-         color: "bg-lime-300",
-         darkColor: "dark:bg-lime-600",
+         variant: "stat-lime",
       },
       {
          label: "Active Users",
          value: randomStats.activeUsers.toString(),
-         color: "bg-pink-300",
-         darkColor: "dark:bg-pink-600",
+         variant: "stat-pink",
       },
       {
          label: "Engagement",
          value: randomStats.engagement,
-         color: "bg-cyan-300",
-         darkColor: "dark:bg-cyan-600",
+         variant: "stat-cyan",
       },
       {
          label: "Growth",
          value: randomStats.growth,
-         color: "bg-yellow-300",
-         darkColor: "dark:bg-yellow-600",
+         variant: "stat-yellow",
       },
    ];
 
    return (
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="mb-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
          {stats.map((stat, idx) => (
-            <div
-               key={idx}
-               className={`${stat.color} ${stat.darkColor} border-4 border-black p-2 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-200 cursor-pointer`}
-            >
-               <p className="text-sm font-bold uppercase mb-1 text-black dark:text-white">
-                  {stat.label}
-               </p>
-               <p className="text-4xl font-black text-black dark:text-white">
-                  {stat.value}
-               </p>
-            </div>
+            <Stat key={idx} {...stat} />
          ))}
       </div>
    );
