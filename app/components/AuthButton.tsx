@@ -1,28 +1,16 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuthButton } from "@/app/hook/useAuthButton";
 import Alert from "./Alert";
 import Button from "./Button";
 
 const AuthButton = () => {
-   const router = useRouter();
-   const { isAuthenticated, logout } = useAuth();
-   const [showLogoutAlert, setShowLogoutAlert] = useState(false);
-
-   const handleLogout = () => {
-      logout();
-      setShowLogoutAlert(true);
-      setTimeout(() => {
-         setShowLogoutAlert(false);
-         router.push("/");
-      }, 25000);
-   };
-
-   const handleDismiss = () => {
-      setShowLogoutAlert(false);
-      router.push("/");
-   };
+   const {
+      isAuthenticated,
+      showLogoutAlert,
+      handleLogout,
+      handleDismiss,
+      handleLogin,
+   } = useAuthButton();
 
    return (
       <>
@@ -39,11 +27,7 @@ const AuthButton = () => {
                Logout
             </Button>
          ) : (
-            <Button
-               onClick={() => router.push("/login")}
-               buttonSize="md"
-               color="btn-green"
-            >
+            <Button onClick={handleLogin} buttonSize="md" color="btn-green">
                Login
             </Button>
          )}
