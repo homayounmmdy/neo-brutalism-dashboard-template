@@ -1,16 +1,8 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React from "react";
 import { DatePickerType } from "../types/FormFiledType";
-import {
-   addDays,
-   addMonths,
-   formatDisplay,
-   getCalendarDays,
-   isSameDay,
-   parseISO,
-   startOfDay,
-   toISO,
-} from "../utils/date";
+import { formatDisplay } from "../utils/date";
+import { useDatePicker } from "../hooks/useDatePicker";
 
 const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
@@ -65,150 +57,33 @@ const DatePicker: React.FC<DatePickerType> = ({
    name,
    ...rest
 }) => {
-   const isControlled = value !== undefined;
-   const [internal, setInternal] = useState(value ?? "");
-   const currentValue = isControlled ? value : internal;
+   const {
+      currentValue,
+      open,
+      setOpen,
+      days,
+      selected,
+      today,
+      monthLabel,
+      wrapRef,
+      triggerRef,
+      gridRef,
+      isDayDisabled,
+      pick,
+      goToday,
+      clear,
+      prevYear,
+      prevMonth,
+      nextMonth,
+      nextYear,
+      onGridKeyDown,
+      onTriggerKeyDown,
+      formatAriaDate,
+      isSameDay,
+      toISO,
+   } = useDatePicker({ value, onChange, min, max });
 
-   const [open, setOpen] = useState(false);
-   const [viewDate, setViewDate] = useState<Date>(
-      () => parseISO(currentValue) ?? new Date()
-   );
-
-   const wrapRef = useRef<HTMLDivElement>(null);
-   const triggerRef = useRef<HTMLButtonElement>(null);
-   const gridRef = useRef<HTMLDivElement>(null);
-   const popupId = useRef(
-      `dp-${Math.random().toString(36).slice(2, 9)}`
-   ).current;
-
-   const selected = parseISO(currentValue);
-   const minDate = parseISO(min);
-   const maxDate = parseISO(max);
-   const today = startOfDay(new Date());
-
-   const commit = (v: string) => {
-      if (!isControlled) setInternal(v);
-      onChange?.(v);
-   };
-
-   /* ---------- Open / close ---------- */
-   useEffect(() => {
-      if (!open) return;
-      const focus = selected ?? new Date();
-      setViewDate(focus);
-      requestAnimationFrame(() => {
-         gridRef.current
-            ?.querySelector<HTMLButtonElement>(`[data-date="${toISO(focus)}"]`)
-            ?.focus();
-      });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [open]);
-
-   useEffect(() => {
-      if (!open) return;
-      const onDown = (e: MouseEvent) => {
-         if (!wrapRef.current?.contains(e.target as Node)) {
-            setOpen(false);
-            triggerRef.current?.focus();
-         }
-      };
-      const onKey = (e: KeyboardEvent) => {
-         if (e.key === "Escape") {
-            setOpen(false);
-            triggerRef.current?.focus();
-         }
-      };
-      document.addEventListener("mousedown", onDown);
-      document.addEventListener("keydown", onKey);
-      return () => {
-         document.removeEventListener("mousedown", onDown);
-         document.removeEventListener("keydown", onKey);
-      };
-   }, [open]);
-
-   /* ---------- Day grid ---------- */
-   const days = useMemo(() => getCalendarDays(viewDate), [viewDate]);
-
-   const isDayDisabled = (d: Date) => {
-      if (minDate && d < startOfDay(minDate)) return true;
-      if (maxDate && d > startOfDay(maxDate)) return true;
-      return false;
-   };
-
-   const pick = (d: Date) => {
-      if (isDayDisabled(d)) return;
-      commit(toISO(d));
-      setOpen(false);
-      triggerRef.current?.focus();
-   };
-
-   const goToday = () => {
-      if (isDayDisabled(today)) return;
-      setViewDate(today);
-      pick(today);
-   };
-
-   const clear = () => {
-      commit("");
-      setOpen(false);
-      triggerRef.current?.focus();
-   };
-
-   const onGridKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-      const iso = (e.target as HTMLElement).dataset?.date;
-      if (!iso) return;
-      const cur = parseISO(iso);
-      if (!cur) return;
-
-      let next: Date | null = null;
-      switch (e.key) {
-         case "ArrowLeft":
-            next = addDays(cur, -1);
-            break;
-         case "ArrowRight":
-            next = addDays(cur, 1);
-            break;
-         case "ArrowUp":
-            next = addDays(cur, -7);
-            break;
-         case "ArrowDown":
-            next = addDays(cur, 7);
-            break;
-         case "Home":
-            next = addDays(cur, -cur.getDay());
-            break;
-         case "End":
-            next = addDays(cur, 6 - cur.getDay());
-            break;
-         case "PageUp":
-            next = addMonths(cur, -1);
-            break;
-         case "PageDown":
-            next = addMonths(cur, 1);
-            break;
-      }
-      if (!next) return;
-      e.preventDefault();
-
-      if (
-         next.getMonth() !== viewDate.getMonth() ||
-         next.getFullYear() !== viewDate.getFullYear()
-      ) {
-         setViewDate(next);
-      }
-      const target = toISO(next);
-      requestAnimationFrame(() => {
-         gridRef.current
-            ?.querySelector<HTMLButtonElement>(`[data-date="${target}"]`)
-            ?.focus();
-      });
-   };
-
-   const monthLabel = viewDate.toLocaleDateString(undefined, {
-      month: "long",
-      year: "numeric",
-   });
-
+   const popupId = React.useId();
    const accentClass = focusColor
       ? `datepicker-${focusColor.replace("focus-", "")}`
       : "";
@@ -230,15 +105,7 @@ const DatePicker: React.FC<DatePickerType> = ({
             id={id}
             disabled={disabled}
             onClick={() => setOpen((o) => !o)}
-            onKeyDown={(e) => {
-               if (
-                  !open &&
-                  (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ")
-               ) {
-                  e.preventDefault();
-                  setOpen(true);
-               }
-            }}
+            onKeyDown={onTriggerKeyDown}
             className={`input ${focusColor} bg-white text-left flex items-center justify-between gap-2 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 ${className ?? ""}`}
             aria-haspopup="dialog"
             aria-expanded={open}
@@ -252,9 +119,7 @@ const DatePicker: React.FC<DatePickerType> = ({
             <CalendarIcon />
          </button>
 
-         {name && (
-            <input type="hidden" name={name} value={currentValue ?? ""} />
-         )}
+         {name && <input type="hidden" name={name} value={currentValue} />}
 
          {open && (
             <div
@@ -268,7 +133,7 @@ const DatePicker: React.FC<DatePickerType> = ({
                      type="button"
                      className="datepicker-nav"
                      aria-label="Previous year"
-                     onClick={() => setViewDate(addMonths(viewDate, -12))}
+                     onClick={prevYear}
                   >
                      <Chevron d="M11 18l-6-6 6-6 M18 18l-6-6 6-6" />
                   </button>
@@ -276,7 +141,7 @@ const DatePicker: React.FC<DatePickerType> = ({
                      type="button"
                      className="datepicker-nav"
                      aria-label="Previous month"
-                     onClick={() => setViewDate(addMonths(viewDate, -1))}
+                     onClick={prevMonth}
                   >
                      <Chevron d="M15 18l-6-6 6-6" />
                   </button>
@@ -285,7 +150,7 @@ const DatePicker: React.FC<DatePickerType> = ({
                      type="button"
                      className="datepicker-nav"
                      aria-label="Next month"
-                     onClick={() => setViewDate(addMonths(viewDate, 1))}
+                     onClick={nextMonth}
                   >
                      <Chevron d="M9 18l6-6-6-6" />
                   </button>
@@ -293,7 +158,7 @@ const DatePicker: React.FC<DatePickerType> = ({
                      type="button"
                      className="datepicker-nav"
                      aria-label="Next year"
-                     onClick={() => setViewDate(addMonths(viewDate, 12))}
+                     onClick={nextYear}
                   >
                      <Chevron d="M13 18l6-6-6-6 M6 18l6-6-6-6" />
                   </button>
@@ -311,7 +176,8 @@ const DatePicker: React.FC<DatePickerType> = ({
                   ))}
                   {days.map((d) => {
                      const iso = toISO(d);
-                     const outside = d.getMonth() !== viewDate.getMonth();
+                     const outside =
+                        d.getMonth() !== new Date(monthLabel).getMonth();
                      const isToday = isSameDay(d, today);
                      const isSelected = !!selected && isSameDay(d, selected);
                      const isDisabled = isDayDisabled(d);
@@ -323,12 +189,7 @@ const DatePicker: React.FC<DatePickerType> = ({
                            onClick={() => pick(d)}
                            disabled={isDisabled}
                            aria-pressed={isSelected}
-                           aria-label={d.toLocaleDateString(undefined, {
-                              weekday: "long",
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                           })}
+                           aria-label={formatAriaDate(d)}
                            className={[
                               "datepicker-day",
                               outside && "datepicker-day-outside",

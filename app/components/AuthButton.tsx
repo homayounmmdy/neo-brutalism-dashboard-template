@@ -1,5 +1,5 @@
 "use client";
-import { useAuthButton } from "@/app/hook/useAuthButton";
+import { useAuthButton } from "@/app/hooks/useAuthButton";
 import Alert from "./Alert";
 import Button from "./Button";
 

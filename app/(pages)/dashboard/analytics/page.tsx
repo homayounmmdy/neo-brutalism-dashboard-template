@@ -1,6 +1,6 @@
 "use client";
 import SectionHeader from "@/app/components/SectionHeader";
-import { useFetchPosts } from "@/app/hook/useFetch";
+import { useFetchPosts } from "@/app/hooks/useFetch";
 import { useEffect, useState } from "react";
 import {
    Bar,

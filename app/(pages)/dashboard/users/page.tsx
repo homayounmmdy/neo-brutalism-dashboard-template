@@ -1,7 +1,7 @@
 "use client";
 import SectionHeader from "@/app/components/SectionHeader";
 import Table from "@/app/components/Table";
-import { useFetchUsers } from "@/app/hook/useFetch";
+import { useFetchUsers } from "@/app/hooks/useFetch";
 import { Column } from "@/app/types/TableType";
 
 type User = {

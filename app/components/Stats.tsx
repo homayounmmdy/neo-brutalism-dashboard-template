@@ -1,7 +1,7 @@
 "use client";
-import { useFetchPosts } from "../hook/useFetch";
-import Stat from "./Stat";
+import { useFetchPosts } from "../hooks/useFetch";
 import { StatType } from "../types/StatType";
+import Stat from "./Stat";
 
 const Stats = () => {
    const { data: posts } = useFetchPosts();

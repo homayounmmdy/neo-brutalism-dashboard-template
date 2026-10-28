@@ -1,4 +1,4 @@
-import { useFetchPosts } from "../hook/useFetch";
+import { useFetchPosts } from "../hooks/useFetch";
 import ContentFrame from "./ContentFrame";
 
 const RecentPosts = () => {
