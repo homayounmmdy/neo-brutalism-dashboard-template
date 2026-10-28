@@ -1,0 +1,318 @@
+"use client";
+
+import DatePicker from "@/app/components/DatePicker";
+import Input from "@/app/components/Input";
+import Textarea from "@/app/components/Textarea";
+import { addDaysISO, getTodayISO } from "@/app/utils/date";
+import React, { useState } from "react";
+
+/* ---------- Layout helpers (not form controls) ---------- */
+
+const Section: React.FC<{ title: string; children: React.ReactNode }> = ({
+   title,
+   children,
+}) => (
+   <section className="space-y-4">
+      <h2 className="border-b-4 border-black pb-2 text-lg font-black text-black dark:border-gray-200 dark:text-gray-200">
+         {title}
+      </h2>
+      {children}
+   </section>
+);
+
+/** Minimal wrapper for the *plain* fields — layout only, no control styling. */
+const Field: React.FC<{
+   label: string;
+   htmlFor?: string;
+   hint?: string;
+   children: React.ReactNode;
+}> = ({ label, htmlFor, hint, children }) => (
+   <div className="space-y-1">
+      <label htmlFor={htmlFor} className="block text-sm">
+         {label}
+      </label>
+      {children}
+      {hint && <p className="text-xs opacity-60">{hint}</p>}
+   </div>
+);
+
+/* ---------- Page ---------- */
+
+export default function FormPage() {
+   const [date, setDate] = useState(getTodayISO());
+
+   return (
+      <main className="mx-auto max-w-3xl space-y-10 px-4 py-10 text-black dark:text-gray-200">
+         <header>
+            <h1 className="text-2xl font-black">Form field reference</h1>
+            <p className="text-sm opacity-60">
+               Custom: Input · Textarea · DatePicker. Everything else is a
+               native field to be upgraded later.
+            </p>
+         </header>
+
+         <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
+            {/* ============ TEXT INPUTS (CUSTOM) ============ */}
+            <Section title="Text inputs — custom Input">
+               <Input
+                  id="text"
+                  label="Text"
+                  focusColor="focus-cyan"
+                  placeholder="Plain text"
+               />
+               <Input
+                  id="email"
+                  type="email"
+                  label="Email"
+                  focusColor="focus-green"
+                  placeholder="you@example.com"
+               />
+               <Input
+                  id="password"
+                  type="password"
+                  label="Password"
+                  focusColor="focus-red"
+                  placeholder="••••••••"
+               />
+               <Input
+                  id="number"
+                  type="number"
+                  label="Number"
+                  focusColor="focus-yellow"
+                  min={0}
+                  max={100}
+                  step={1}
+                  defaultValue={42}
+               />
+               <Input
+                  id="tel"
+                  type="tel"
+                  label="Telephone"
+                  focusColor="focus-cyan"
+                  placeholder="+1 555 000 0000"
+               />
+               <Input
+                  id="url"
+                  type="url"
+                  label="URL"
+                  focusColor="focus-green"
+                  placeholder="https://example.com"
+               />
+               <Input
+                  id="search"
+                  type="search"
+                  label="Search"
+                  focusColor="focus-yellow"
+                  placeholder="Search…"
+               />
+               <Input
+                  id="disabled"
+                  label="Disabled"
+                  focusColor="focus-cyan"
+                  defaultValue="Read-only value"
+                  disabled
+               />
+            </Section>
+
+            {/* ============ TEXTAREA (CUSTOM) ============ */}
+            <Section title="Multiline — custom Textarea">
+               <Textarea
+                  id="message"
+                  label="Message"
+                  focusColor="focus-cyan"
+                  placeholder="Write something…"
+                  rows={4}
+               />
+               <Textarea
+                  id="bio"
+                  label="Bio"
+                  focusColor="focus-red"
+                  placeholder="Tell us about yourself"
+                  rows={3}
+               />
+            </Section>
+
+            {/* ============ DATE / TIME ============ */}
+            <Section title="Date & time">
+               <DatePicker
+                  id="dob"
+                  label="Date (custom DatePicker)"
+                  focusColor="focus-cyan"
+                  max={getTodayISO()}
+                  value={date}
+                  onChange={setDate}
+               />
+
+               <DatePicker
+                  id="delivery"
+                  label="Date — bounded range"
+                  focusColor="focus-green"
+                  min={getTodayISO()}
+                  max={addDaysISO(30)}
+               />
+
+               <Field label="Time" htmlFor="time">
+                  <input id="time" type="time" />
+               </Field>
+
+               <Field label="Date & time (local)" htmlFor="datetime-local">
+                  <input id="datetime-local" type="datetime-local" />
+               </Field>
+
+               <Field label="Month" htmlFor="month">
+                  <input id="month" type="month" />
+               </Field>
+
+               <Field label="Week" htmlFor="week">
+                  <input id="week" type="week" />
+               </Field>
+            </Section>
+
+            {/* ============ SELECT ============ */}
+            <Section title="Select">
+               <Field label="Single select" htmlFor="select-single">
+                  <select id="select-single" defaultValue="">
+                     <option value="" disabled>
+                        Choose…
+                     </option>
+                     <option value="a">Option A</option>
+                     <option value="b">Option B</option>
+                     <option value="c">Option C</option>
+                  </select>
+               </Field>
+
+               <Field
+                  label="Multiple select"
+                  htmlFor="select-multi"
+                  hint="Hold Ctrl / Cmd to select more than one."
+               >
+                  <select id="select-multi" multiple size={4}>
+                     <option value="1">One</option>
+                     <option value="2">Two</option>
+                     <option value="3">Three</option>
+                     <option value="4">Four</option>
+                  </select>
+               </Field>
+
+               <Field label="Grouped select" htmlFor="select-grouped">
+                  <select id="select-grouped">
+                     <optgroup label="Fruits">
+                        <option>Apple</option>
+                        <option>Banana</option>
+                     </optgroup>
+                     <optgroup label="Vegetables">
+                        <option>Carrot</option>
+                        <option>Potato</option>
+                     </optgroup>
+                  </select>
+               </Field>
+
+               <Field label="Disabled select" htmlFor="select-disabled">
+                  <select id="select-disabled" disabled>
+                     <option>Unavailable</option>
+                  </select>
+               </Field>
+            </Section>
+
+            {/* ============ CHECKBOX ============ */}
+            <Section title="Checkbox">
+               <div className="flex items-center gap-2">
+                  <input id="checkbox-single" type="checkbox" />
+                  <label htmlFor="checkbox-single" className="text-sm">
+                     Accept terms
+                  </label>
+               </div>
+
+               <fieldset className="space-y-2">
+                  <legend className="mb-1 text-sm">Interests</legend>
+                  {["Design", "Code", "Music"].map((item) => (
+                     <div key={item} className="flex items-center gap-2">
+                        <input
+                           id={`cb-${item}`}
+                           type="checkbox"
+                           name="interests"
+                           value={item}
+                        />
+                        <label htmlFor={`cb-${item}`} className="text-sm">
+                           {item}
+                        </label>
+                     </div>
+                  ))}
+               </fieldset>
+
+               <div className="flex items-center gap-2">
+                  <input id="checkbox-disabled" type="checkbox" disabled />
+                  <label htmlFor="checkbox-disabled" className="text-sm">
+                     Disabled checkbox
+                  </label>
+               </div>
+            </Section>
+
+            {/* ============ RADIO ============ */}
+            <Section title="Radio">
+               <fieldset className="space-y-2">
+                  <legend className="mb-1 text-sm">Plan</legend>
+                  {["Free", "Pro", "Enterprise"].map((plan) => (
+                     <div key={plan} className="flex items-center gap-2">
+                        <input
+                           id={`radio-${plan}`}
+                           type="radio"
+                           name="plan"
+                           value={plan.toLowerCase()}
+                           defaultChecked={plan === "Pro"}
+                        />
+                        <label htmlFor={`radio-${plan}`} className="text-sm">
+                           {plan}
+                        </label>
+                     </div>
+                  ))}
+               </fieldset>
+            </Section>
+
+            {/* ============ FILE / RANGE / COLOR ============ */}
+            <Section title="File · Range · Color">
+               <Field
+                  label="File upload"
+                  htmlFor="file"
+                  hint="PNG, JPG up to 2MB."
+               >
+                  <input id="file" type="file" accept="image/*" />
+               </Field>
+
+               <Field label="Multiple files" htmlFor="file-multi">
+                  <input id="file-multi" type="file" multiple />
+               </Field>
+
+               <Field label="Range" htmlFor="range">
+                  <input
+                     id="range"
+                     type="range"
+                     min={0}
+                     max={100}
+                     step={5}
+                     defaultValue={50}
+                  />
+               </Field>
+
+               <Field label="Color" htmlFor="color">
+                  <input id="color" type="color" defaultValue="#22d3ee" />
+               </Field>
+            </Section>
+
+            {/* ============ MISC ============ */}
+            <Section title="Misc">
+               <input type="hidden" name="formToken" defaultValue="abc-123" />
+
+               <Field label="Read-only" htmlFor="readonly">
+                  <input id="readonly" defaultValue="Cannot edit" readOnly />
+               </Field>
+
+               <div className="flex flex-wrap gap-3 pt-2">
+                  <button type="submit">Submit</button>
+                  <button type="reset">Reset</button>
+               </div>
+            </Section>
+         </form>
+      </main>
+   );
+}
