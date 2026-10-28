@@ -12,3 +12,8 @@ export type InputType = {
    focusColor?: `focus-${ColorsVariant}`;
    label?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
+
+export type TextareaType = {
+   focusColor?: `focus-${ColorsVariant}`;
+   label?: string;
+} & React.TextareaHTMLAttributes<HTMLTextAreaElement>;

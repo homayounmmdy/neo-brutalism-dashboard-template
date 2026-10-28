@@ -40,6 +40,12 @@
       @apply focus:ring-4 focus:ring-green-300 dark:focus:ring-green-500;
    }
 
+   .textarea {
+      @apply w-full border-4 border-black px-4 py-2 font-bold focus:outline-none
+          dark:bg-gray-800 dark:text-white
+          resize-none min-h-[6rem] leading-relaxed;
+   }
+
    .stat {
       @apply border-4 border-black p-2 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-200 cursor-pointer;
    }
