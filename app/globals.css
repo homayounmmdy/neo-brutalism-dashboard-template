@@ -176,3 +176,150 @@
 :where(.dark, .dark *) .alert-close:hover {
    background-color: rgb(255 255 255 / 0.1);
 }
+
+/* ---- Base + defaults (used when no variant is passed) ---- */
+.datepicker-wrap {
+   --dp-accent: #000;
+   --dp-accent-soft: #f3f4f6;
+   --dp-accent-fg: #fff;
+}
+.dark .datepicker-wrap {
+   --dp-accent: #e5e7eb;
+   --dp-accent-soft: #1f2937;
+   --dp-accent-fg: #111;
+}
+
+/* ---- Variant accents (override the base) ---- */
+.datepicker-cyan {
+   --dp-accent: #06b6d4;
+   --dp-accent-soft: #cffafe;
+   --dp-accent-fg: #fff;
+}
+.datepicker-yellow {
+   --dp-accent: #eab308;
+   --dp-accent-soft: #fef9c3;
+   --dp-accent-fg: #111;
+}
+.datepicker-red {
+   --dp-accent: #ef4444;
+   --dp-accent-soft: #fee2e2;
+   --dp-accent-fg: #fff;
+}
+.datepicker-green {
+   --dp-accent: #22c55e;
+   --dp-accent-soft: #dcfce7;
+   --dp-accent-fg: #fff;
+}
+
+.dark .datepicker-cyan {
+   --dp-accent: #22d3ee;
+   --dp-accent-soft: #164e63;
+   --dp-accent-fg: #111;
+}
+.dark .datepicker-yellow {
+   --dp-accent: #facc15;
+   --dp-accent-soft: #713f12;
+   --dp-accent-fg: #111;
+}
+.dark .datepicker-red {
+   --dp-accent: #f87171;
+   --dp-accent-soft: #7f1d1d;
+   --dp-accent-fg: #111;
+}
+.dark .datepicker-green {
+   --dp-accent: #4ade80;
+   --dp-accent-soft: #14532d;
+   --dp-accent-fg: #111;
+}
+
+/* ---- Trigger icon ---- */
+.datepicker-icon {
+   color: var(--dp-accent);
+   flex-shrink: 0;
+}
+
+/* ---- Popup shell (unchanged except no color here) ---- */
+.datepicker-popup {
+   @apply absolute left-0 top-full z-50 mt-2 w-[17rem] p-3
+          bg-white border-4 border-black shadow-[4px_4px_0_0_#000]
+          dark:bg-gray-800 dark:border-gray-200 dark:shadow-[4px_4px_0_0_#6b7280];
+   animation: datepicker-in 120ms ease-out;
+}
+@keyframes datepicker-in {
+   from {
+      opacity: 0;
+      transform: translateY(-4px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+/* ---- Header ---- */
+.datepicker-header {
+   @apply mb-3 flex items-center gap-1;
+}
+.datepicker-nav {
+   @apply flex h-7 w-7 items-center justify-center border-2 border-black font-black transition-colors disabled:cursor-not-allowed disabled:opacity-30 dark:border-gray-200;
+}
+.datepicker-nav:not(:disabled):hover {
+   background: var(--dp-accent-soft);
+}
+.datepicker-nav:focus-visible {
+   outline: 2px solid var(--dp-accent);
+   outline-offset: 1px;
+}
+.datepicker-title {
+   @apply flex-1 text-center text-sm font-black;
+}
+
+/* ---- Grid ---- */
+.datepicker-grid {
+   @apply grid grid-cols-7 gap-1;
+}
+.datepicker-dow {
+   @apply py-1 text-center text-xs font-black opacity-60;
+}
+
+.datepicker-day {
+   @apply flex h-8 w-full items-center justify-center text-sm font-bold transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-20;
+}
+.datepicker-day:not(:disabled):hover {
+   background: var(--dp-accent-soft);
+}
+.datepicker-day:focus-visible {
+   outline: 2px solid var(--dp-accent);
+   outline-offset: 1px;
+}
+
+.datepicker-day-outside {
+   @apply opacity-30;
+}
+
+.datepicker-day-today {
+   border: 2px solid var(--dp-accent);
+}
+
+.datepicker-day-selected {
+   background: var(--dp-accent);
+   color: var(--dp-accent-fg);
+}
+.datepicker-day-selected:hover {
+   background: var(--dp-accent);
+}
+
+/* ---- Footer ---- */
+.datepicker-footer {
+   @apply mt-3 flex justify-between gap-2 border-t-2 border-black pt-3 dark:border-gray-200;
+}
+.datepicker-footer button {
+   @apply border-2 border-black px-3 py-1 text-xs font-black transition-colors disabled:cursor-not-allowed disabled:opacity-30 dark:border-gray-200;
+}
+.datepicker-footer button:not(:disabled):hover {
+   background: var(--dp-accent-soft);
+}
+.datepicker-footer button:focus-visible {
+   outline: 2px solid var(--dp-accent);
+   outline-offset: 1px;
+}
